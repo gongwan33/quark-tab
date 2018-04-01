@@ -1,0 +1,18 @@
+.qt-tabs-frame .qt-tabs {
+    background-color: #ddd;
+    width: 100%;
+}
+
+.qt-tabs-frame .hide {
+    display: none;
+}
+
+.qt-tabs-fram .qt-tab-content {
+    margin: 5px;
+}
+
+.qt-tabs-frame .qt-tabs .tab{
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+}
