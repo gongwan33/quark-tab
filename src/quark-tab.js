@@ -7,11 +7,12 @@
         `;
     $.fn.quarkTab = function(options) {
         var settings = $.extend({
+            defaultPage: 0,
             style: 'default',
+            tabActiveColor: 'red',
+            tabColor: '#ddd',
         }, options);
         
-        var instance = this;
-
         this.each(function(outerIndex, tab) {
             var originContent = $(tab).clone();      
             var pages = $(tab).find('page');
@@ -35,7 +36,9 @@
                 $(tab).append(frame);
             });
 
-            $(tab).find('.qt-tab-content .qt-tab-page').first().removeClass('hide');
+            $($(tab).find('.qt-tab-content .qt-tab-page').get(settings.defaultPage)).removeClass('hide');
+            $($(tab).find('.qt-tabs .tab').get(settings.defaultPage)).css('color', settings.tabActiveColor);
+            $(tab).find('.qt-tabs').css('background-color', settings.tabColor);
 
             $(tab).find('.qt-tabs .tab').click(function(ev) {
                 var clkTab = $(ev.target).closest('.tab'); 
@@ -44,6 +47,9 @@
                 
                 $(curTab).find('.qt-tab-content .qt-tab-page').addClass('hide');
                 $($(curTab).find('.qt-tab-content .qt-tab-page').get(tabIndex)).removeClass('hide');
+
+                $(curTab).find('.tab').css('color', 'black');
+                $($(curTab).find('.tab').get(tabIndex)).css('color', 'red');
             });
         });
     }
